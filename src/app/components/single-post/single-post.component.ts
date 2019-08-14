@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PostResponse, PostsService } from '../../services/posts.service';
 
 @Component({
   selector: 'app-single-post',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SinglePostComponent implements OnInit {
 
-  constructor() { }
+  singlePost: PostResponse;
+  singlePostId: any;
+
+  constructor(private postsService: PostsService,
+              private route: ActivatedRoute, ) { }
 
   ngOnInit() {
+    this.getSinglePost();
   }
 
+  private getSinglePost() {
+    this.route.params.subscribe(params => {
+      this.singlePostId = params['id'];
+      this.postsService.getEntity(this.singlePostId)
+        .subscribe(data => {
+          this.singlePost = data;
+          console.log(this.singlePost);
+        });
+    });
+  }
 }
+
+

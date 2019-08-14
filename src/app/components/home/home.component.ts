@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { PostResponse, PostsService } from '../../services/posts.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private postsService: PostsService) { }
 
-  ngOnInit() {
+  listOfposts: PostResponse[];
+
+    ngOnInit() {
+    this.showPosts();
+  }
+
+  private showPosts() {
+    console.log(this.postsService);
+    this.postsService.getEntities()
+      .subscribe(data => {
+        this.listOfposts = data;
+      });
   }
 
 }
