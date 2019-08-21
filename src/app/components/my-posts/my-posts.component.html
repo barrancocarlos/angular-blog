@@ -18,9 +18,9 @@
               <h2 class="blog-post-title">{{ post.title }}</h2>
               <p class="card-text">{{ post.content }}</p>
               <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <a [routerLink]="['../single-post', post.id]"><button type="button" class="btn btn-sm btn-outline-primary">View</button></a>
+                <div class="btn-group">                  
                   <a [routerLink]="['../edit-post', post.id]"><button type="button" class="btn btn-sm btn-outline-info">Edit</button></a>
+                  <button class="btn btn-sm btn-outline-danger" (click)="onDelete(post.id)">Delete</button>   
                 </div>
                 <small class="text-muted">{{ post.created_at | date :  "dd.MM.y" }}</small>
               </div>

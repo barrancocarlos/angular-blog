@@ -25,4 +25,11 @@ export class MyPostsComponent implements OnInit {
       });
   }
 
+  onDelete(id: any) {
+    this.postsService.deleteEntity(id)
+    .subscribe(() => {
+      this.showPosts();
+    });
+  }
+
 }
