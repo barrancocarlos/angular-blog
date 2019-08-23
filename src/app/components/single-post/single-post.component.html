@@ -3,7 +3,7 @@
       <div class="col-sm">
         <div class="blog-post">
           <h2 class="blog-post-title">{{ singlePost?.title }}</h2>
-          <p class="blog-post-meta">{{ singlePost?.created_at | date :  "dd.MM.y" }} <a href="#">by {{ singlePost?.author }}</a></p>
+          <p class="blog-post-meta">{{ singlePost?.created_at | date :  "dd.MM.y" }} <a href="#">by {{ singlePost?.author.name  }} {{ singlePost?.author.last_name  }}</a></p>
 
           <p>{{ singlePost?.content }}</p>
         </div><!-- /.blog-post -->
