@@ -10,6 +10,15 @@
     "e2e": "ng e2e"
   },
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:barrancocarlos/angular-blog.git"
+  },
+  "homepage": "https://github.com/barrancocarlos/angular-blog/README.md",
+  "author": {
+    "name": "Carlos Barranco",
+    "url" : "https://github.com/barrancocarlos"
+  },
   "dependencies": {
     "@angular/animations": "~7.2.0",
     "@angular/common": "~7.2.0",
