@@ -11,25 +11,22 @@ export class SecurityService {
 
   constructor(private httpClient: HttpClient, private global: GlobalService) { }
 
-  login(data) {
-    return this.httpClient.post<{ token: string }>(this.global.BASE_URI + 'login/', { data }).pipe(tap(res => {
-      localStorage.setItem('token', res.token);
+  login(email: string, password: string) {
+    return this.httpClient.post<{ token: string }>
+    (this.global.BASE_URI + 'login/', {email, password}).pipe(tap(res => {
+      localStorage.setItem('access_token', res.token);
     }));
   }
 
-  // register(email: string, password: string) {
-  //   return this.httpClient.post<{ token: string }>(this.global.BASE_URI + 'register/', { email, password }).pipe(tap(res => {
-  //     this.login(email, password)
-  //   }))
-  // }
-
   logout() {
-    localStorage.removeItem('token');
+    localStorage.removeItem('access_token');
   }
 
   public get isLoggedIn(): boolean {
-    return localStorage.getItem('access_token') !== null;
+    return (localStorage.getItem('access_token') !== null);
   }
+
+
 
 
 }
