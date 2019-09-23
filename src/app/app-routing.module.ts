@@ -7,6 +7,7 @@ import { AddPostComponent } from './components/add-post/add-post.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AuthGuardService } from './security/auth.guard.service';
 
 const routes: Routes = [
   {
@@ -15,7 +16,8 @@ const routes: Routes = [
   },
   {
     path: 'myposts',
-    component: MyPostsComponent
+    component: MyPostsComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'single-post/:id',

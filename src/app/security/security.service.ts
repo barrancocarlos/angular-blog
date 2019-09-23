@@ -13,20 +13,18 @@ export class SecurityService {
 
   login(email: string, password: string) {
     return this.httpClient.post<{ token: string }>
-    (this.global.BASE_URI + 'login/', {email, password}).pipe(tap(res => {
-      localStorage.setItem('access_token', res.token);
-    }));
+      (this.global.BASE_URI + 'login/', { email, password }).pipe(tap(res => {
+        localStorage.setItem('access_token', res.token);
+      }));
   }
 
   logout() {
     localStorage.removeItem('access_token');
   }
 
-  public get isLoggedIn(): boolean {
+  public isLoggedIn(): boolean {
     return (localStorage.getItem('access_token') !== null);
   }
-
-
 
 
 }

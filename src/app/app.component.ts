@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SecurityService } from './security/security.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-auth';
+
+  constructor(private securityService: SecurityService, ) { }
+  
+  logout(): void {
+    this.securityService.logout();
+  }
+
 }

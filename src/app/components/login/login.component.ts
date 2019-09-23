@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       email: this.ngForm.get('email').value,
       password: this.ngForm.get('password').value,
     };
-    this.loginService.login(data)
+    this.loginService.login(data.email, data.password)
       .subscribe(results => {
         this.router.navigate(['/']);
       });
