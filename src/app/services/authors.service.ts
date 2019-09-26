@@ -11,6 +11,7 @@ export interface AuthorResponse {
   password: string;
   name: string;
   last_name: string;
+  userId: string;
   user: any;
 }
 
@@ -26,6 +27,11 @@ export class AuthorsService {
   getEntities(): Observable<AuthorResponse[]> {
     return this.http
       .get<AuthorResponse[]>(this.global.BASE_URI + this.uri, { responseType: 'json' });
+  }
+
+  getEntityByUser(userId): Observable<AuthorResponse[]> {
+    return this.http
+      .get<AuthorResponse[]>(this.global.BASE_URI + this.uri + '?user_id=' + userId, { responseType: 'json' });
   }
 
   getEntity(id) {

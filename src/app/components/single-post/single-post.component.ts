@@ -15,7 +15,7 @@ export class SinglePostComponent implements OnInit {
 
 
   constructor(private postsService: PostsService,
-    private route: ActivatedRoute, ) { }
+              private route: ActivatedRoute, ) { }
 
   ngOnInit() {
     this.getSinglePost();
