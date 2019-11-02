@@ -13,6 +13,7 @@ export class EditPostComponent implements OnInit {
   ngForm: FormGroup;
   singlePost: PostResponse;
   singlePostId: any;
+  authorId: any;
 
   constructor(private postsService: PostsService,
               private router: Router,
@@ -29,11 +30,12 @@ export class EditPostComponent implements OnInit {
     this.ngForm = this.fb.group({
       title: ['',],
       content: ['',],
-      author: ['',],
+      author_id: ['',],
     });
   }
 
   private getSinglePost() {
+    this.authorId = JSON.parse(localStorage.getItem('authorInfo'));
     this.route.params.subscribe(params => {
       this.singlePostId = params['id'];
       this.postsService.getEntity(this.singlePostId)
@@ -43,7 +45,7 @@ export class EditPostComponent implements OnInit {
           this.ngForm.setValue({
             title: this.singlePost.title,
             content: this.singlePost.content,
-            author: this.singlePost.author,
+            author_id: this.authorId[0].id,
           });
         });
     });

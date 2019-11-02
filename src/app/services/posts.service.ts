@@ -12,6 +12,7 @@ export interface PostResponse {
   created_at: Date;
   updated_at: Date;
   author: any; // change when author response
+  authorId: string;
 }
 
 @Injectable({
@@ -27,6 +28,11 @@ export class PostsService {
   getEntities(): Observable<PostResponse[]> {
     return this.http
       .get<PostResponse[]>(this.global.BASE_URI + this.uri, { responseType: 'json' });
+  }
+
+  getEntitiesByAuthor(authorId): Observable<PostResponse[]> {
+    return this.http
+      .get<PostResponse[]>(this.global.BASE_URI + this.uri + '?author_id=' + authorId, { responseType: 'json' });
   }
 
   getEntity(id) {

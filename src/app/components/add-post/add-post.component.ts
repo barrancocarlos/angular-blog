@@ -11,6 +11,7 @@ import { PostsService } from '../../services/posts.service';
 export class AddPostComponent implements OnInit {
 
   ngForm: FormGroup;
+  authorId: any;
 
   constructor(private postsService: PostsService,
               private router: Router,
@@ -25,14 +26,15 @@ export class AddPostComponent implements OnInit {
     this.ngForm = this.fb.group({
       title: ['', ],
       content: ['', ],
-      author: ['', ],
+      author_id: ['', ],
     });
   }
   onSubmit() {
+    this.authorId = JSON.parse(localStorage.getItem('authorInfo'));
     const data = {
       title: this.ngForm.get('title').value,
       content: this.ngForm.get('content').value,
-      author: this.ngForm.get('author').value,
+      author_id: this.authorId[0].id,
     };
     this.postsService.postEntity(data)
       .subscribe(results => {

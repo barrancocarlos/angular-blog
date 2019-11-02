@@ -12,23 +12,17 @@ export class MyPostsComponent implements OnInit {
 
   singleAuthor: AuthorResponse[];
   userId: any;
+  authorId: any;
 
   constructor(private postsService: PostsService,
-              private authorsService: AuthorsService, ) { }
+    private authorsService: AuthorsService, ) { }
 
-  listOfmyposts: PostResponse[];
+  listOfmypostsByAuthor: PostResponse[];
 
-    ngOnInit() {
-    this.showPosts();
+  ngOnInit() {
+    // this.showPosts();
     this.getAuthorByUser();
-  }
-
-  private showPosts() {
-    console.log(this.postsService);
-    this.postsService.getEntities()
-      .subscribe(data => {
-        this.listOfmyposts = data;
-      });
+    this.showPostsByAuthor();
   }
 
   private getAuthorByUser() {
@@ -36,14 +30,24 @@ export class MyPostsComponent implements OnInit {
     this.authorsService.getEntityByUser(this.userId.userId)
       .subscribe(data => {
         this.singleAuthor = data;
+        localStorage.setItem('authorInfo', JSON.stringify(data));
+      });
+  }
+
+  private showPostsByAuthor() {
+    this.authorId = JSON.parse(localStorage.getItem('authorInfo'));
+    console.log(this.postsService);
+    this.postsService.getEntitiesByAuthor(this.authorId[0].id)
+      .subscribe(data => {
+        this.listOfmypostsByAuthor = data;
       });
   }
 
   onDelete(id: any) {
     this.postsService.deleteEntity(id)
-    .subscribe(() => {
-      this.showPosts();
-    });
+      .subscribe(() => {
+        this.showPostsByAuthor();
+      });
   }
 
 }
