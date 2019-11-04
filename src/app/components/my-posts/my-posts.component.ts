@@ -15,7 +15,7 @@ export class MyPostsComponent implements OnInit {
   authorId: any;
 
   constructor(private postsService: PostsService,
-    private authorsService: AuthorsService, ) { }
+              private authorsService: AuthorsService, ) { }
 
   listOfmypostsByAuthor: PostResponse[];
 

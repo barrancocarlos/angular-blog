@@ -1,3 +1,26 @@
-<p>
-  register works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <form [formGroup]="ngForm">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter name" formControlName="name" #name>         
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" class="form-control" id="last_name" placeholder="Enter Last Name" formControlName="last_name" #last_name>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="text" class="form-control" id="email" placeholder="Enter Email" formControlName="email" #email>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="text" class="form-control" id="password" placeholder="Enter Password" formControlName="password" #password>
+        </div>
+               
+        <button (click)="onSubmit()" type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

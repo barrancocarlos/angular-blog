@@ -28,9 +28,9 @@ export class EditPostComponent implements OnInit {
 
   createForm() {
     this.ngForm = this.fb.group({
-      title: ['',],
-      content: ['',],
-      author_id: ['',],
+      title: ['', ],
+      content: ['', ],
+      author_id: ['', ],
     });
   }
 
@@ -55,7 +55,7 @@ export class EditPostComponent implements OnInit {
     const data = {
       title: this.ngForm.get('title').value,
       content: this.ngForm.get('content').value,
-      author: this.ngForm.get('author').value,
+      author_id: this.authorId[0].id,
     };
     this.postsService.putEntity(this.singlePostId, data)
       .subscribe(res => {
