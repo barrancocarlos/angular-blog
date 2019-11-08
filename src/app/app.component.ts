@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
 import { SecurityService } from './security/security.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
-})
+}) 
 
 export class AppComponent {
   title = 'angular-auth';
 
-  constructor(private securityService: SecurityService, ) { }
+  constructor(private securityService: SecurityService,
+              private router: Router, ) { }
 
   ngOnInit() {
     this.isAuthenticated();
@@ -25,6 +27,7 @@ export class AppComponent {
 
   logout(): void {
     this.securityService.logout();
+    this.router.navigate(['/']);
   }
 
 }

@@ -22,7 +22,7 @@ export class SecurityService {
   }
 
   logout() {
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem('currentUser');    
   }
 
   public isLoggedIn(): boolean {
