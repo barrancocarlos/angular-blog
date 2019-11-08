@@ -13,7 +13,7 @@ import { AddPostComponent } from './components/add-post/add-post.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-
+import { HttpAuthInterceptorModule } from './security/http-auth-interceptor.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +32,7 @@ import { RegisterComponent } from './components/register/register.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpAuthInterceptorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
